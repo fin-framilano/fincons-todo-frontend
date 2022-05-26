@@ -1,0 +1,8 @@
+<fin-navbar-container
+    [listTabs]="listTabs"
+    [showLogout]="true"
+    (menuSelectionEvent)="navbarClickHandler($event)"
+></fin-navbar-container>
+<div class="centered">
+    <router-outlet></router-outlet>
+</div>

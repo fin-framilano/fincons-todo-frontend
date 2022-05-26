@@ -1,0 +1,8 @@
+<label>Prova delle parole chiavi per trovare il tuo promemoria</label><br>
+<input type="text" (input)="searchTodo()" name="todoQuery" [(ngModel)]="todoQuery">
+
+<fin-common-table
+    [items]= listOfTodos
+    [headers]= "['Contenuto', 'Data creazione', 'Data scadenza', 'Stato']"
+    [fields]= "['content', 'createdAt', 'dueDate', 'status']"
+></fin-common-table>

@@ -1,0 +1,18 @@
+<small>Ricorda che puoi fare un resize del campo di testo!</small>
+<form #todoForm="ngForm" (submit)="completeTodoForm(todoForm)">
+    <div>
+        <label> Inserisci contenuto promemoria </label><br />
+        <textarea name="campoContent" #refContent="ngModel" [ngModel]="insertedContent" required 
+        ></textarea>
+        <br/>
+    </div>
+    <div >
+        <label> Inserisci giorno e orario</label><br />
+        <input type="datetime-local" name="campoDate" 
+        min="{{this.minimum_due}}"
+        #refDate="ngModel" [ngModel]="insertedDate"/><br />
+    </div>
+
+    <input class="todo-button" type="submit" value="Salva" /><br />
+</form>
+
