@@ -4,7 +4,6 @@
         <label> Inserisci contenuto promemoria </label><br />
         <textarea name="campoContent" #refContent="ngModel" [ngModel]="insertedContent" required 
         ></textarea>
-        <br/>
     </div>
     <div >
         <label> Inserisci giorno e orario</label><br />
@@ -13,6 +12,6 @@
         #refDate="ngModel" [ngModel]="insertedDate"/><br />
     </div>
 
-    <input class="todo-button" type="submit" value="Salva" /><br />
+    <input [disabled]="refContent.value===''" class="todo-button" type="submit" value="Salva" /><br />
 </form>
 

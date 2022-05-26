@@ -42,11 +42,16 @@ export class TodoSearchComponent implements OnInit {
 
   searchTodo() {
     this.listOfTodos = []
-    this.listOfAllTodos.forEach(todo => {
-      if (this.todoQuery.length !== 0 && todo.content.toLowerCase().includes(this.todoQuery.toLowerCase())) {
-        this.listOfTodos.push(todo)
-      }
+    let key_words = this.todoQuery.split(" ")
+    key_words.forEach(word => {
+      this.listOfAllTodos.forEach(todo => {
+        if (word.length !== 0 && todo.content.toLowerCase().includes(word.toLowerCase())) {
+          this.atleastOne = true
+          if (!this.listOfTodos.includes(todo)) this.listOfTodos.push(todo)
+        }
+      });
     });
+    if (this.listOfTodos.length == 0) this.atleastOne = false
   }
 
 }

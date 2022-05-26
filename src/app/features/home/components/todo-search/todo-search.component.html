@@ -1,8 +1,9 @@
 <label>Prova delle parole chiavi per trovare il tuo promemoria</label><br>
 <input type="text" (input)="searchTodo()" name="todoQuery" [(ngModel)]="todoQuery">
 
-<fin-common-table
+<fin-common-table *ngIf="atleastOne"
     [items]= listOfTodos
     [headers]= "['Contenuto', 'Data creazione', 'Data scadenza', 'Stato']"
     [fields]= "['content', 'createdAt', 'dueDate', 'status']"
 ></fin-common-table>
+<div *ngIf="!atleastOne">Non ci sono promemoria che corrispondono a ciò che cerchi</div>

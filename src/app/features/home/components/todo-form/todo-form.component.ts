@@ -39,6 +39,27 @@ export class TodoFormComponent implements OnInit {
     )
   }
 
+  buildLocaleDate(date: Date) {
+    let formattedString: string = ""
+
+    formattedString += date.getFullYear() + "-"
+
+    if (date.getMonth() < 10) formattedString += "0" + (date.getMonth() + 1) + "-"
+    else formattedString += date.getMonth() + 1 + "-"
+
+    if (date.getDate() < 10) formattedString += "0" + date.getDate() + " "
+    else formattedString += date.getDate() + " "
+
+    if (date.getHours() < 10) formattedString += "0" + date.getHours() + ":"
+    else formattedString += date.getHours() + ":"
+
+
+    if (date.getMinutes() < 10) formattedString += "0" + date.getMinutes() + ":00"
+    else formattedString += date.getMinutes() + ":00"
+
+    return formattedString
+  }
+
   completeTodoForm(todoForm: NgForm) {
     let currentDate = new Date()
     if (typeof (todoForm.value.campoDate) === "string") todoForm.value.campoDate = new Date(todoForm.value.campoDate)
@@ -49,12 +70,12 @@ export class TodoFormComponent implements OnInit {
 
     todoForm.value.campoDate.setSeconds(0, 0)
     currentDate.setSeconds(0, 0)
-
+    
     const todo: Todo = {
       "id": 0,
       "content": todoForm.value.campoContent,
-      "dueDate": todoForm.value.campoDate.toISOString().replace(":00.000Z", ""),
-      "createdAt": currentDate.toISOString().replace(":00.000Z", ""),
+      "dueDate": this.buildLocaleDate(todoForm.value.campoDate),
+      "createdAt": this.buildLocaleDate(currentDate),
       "status": "TODO",
       "userId": this.user_id
     }
@@ -68,3 +89,5 @@ export class TodoFormComponent implements OnInit {
   }
 
 }
+
+
