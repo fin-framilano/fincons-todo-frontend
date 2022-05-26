@@ -1,0 +1,6 @@
+<fin-common-table *ngIf="atleastOne"
+    [headers]="['Contenuto', 'Data creazione', 'Data scadenza', 'Stato']"
+    [items]= listOfTodos
+    [fields]= "['content', 'createdAt', 'dueDate', 'status']"
+></fin-common-table>
+<div *ngIf="!atleastOne">Non ci sono promemoria salvati!</div>
