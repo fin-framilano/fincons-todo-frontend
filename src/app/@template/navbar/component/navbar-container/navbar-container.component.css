@@ -31,6 +31,7 @@ button {
   text-align: center;
   padding: 2vh;
   cursor: pointer;
+  color: white;
 }
 
 button:hover {
