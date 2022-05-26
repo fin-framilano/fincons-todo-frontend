@@ -5,7 +5,7 @@
             {{item[field].replace(":00.000+00:00", "")}}
         </td>
         <td *ngIf="options.length > 0">
-            <p *ngFor="let option of options; let i = index" (click)="clickOnOptions(i, item)">{{option}}</p>
+            <button *ngFor="let option of options; let i = index" (click)="clickOnOptions(i, item)">{{option}}</button>
         </td>
     </tr>
 </table>

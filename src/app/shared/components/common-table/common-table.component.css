@@ -7,9 +7,13 @@ table {
 }
 
 th, td, tr {
+    vertical-align: middle;
     border: 1px solid black;
+    height: 5vh;
 }
 
-p {
+button {
     cursor: pointer;
+    margin-left: 3%;
+    margin-right: 3%;
 }
