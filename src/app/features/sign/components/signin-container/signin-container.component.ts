@@ -26,7 +26,7 @@ export class SigninContainerComponent implements OnInit {
     this.userService.login(auth_user).subscribe(
       result => {
         if (result) {
-          this.router.navigateByUrl("home")
+          this.router.navigateByUrl("home/" + result.id)
         } else this.incorrectFormValue = true
       }, error => console.log(error)
     )

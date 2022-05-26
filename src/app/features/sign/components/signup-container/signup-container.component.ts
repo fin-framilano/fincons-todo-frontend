@@ -25,14 +25,12 @@ export class SignupContainerComponent implements OnInit {
   signupHandler(auth_user: AuthUser) {
     this.userService.findByMail(auth_user.mail).subscribe(
       result => {
-        console.log(result)
         if (result) {
           this.incorrectFormValue = true
         } else {
           auth_user.password = SecurityUtils.computeMd5(auth_user.password)
           this.userService.createUser(auth_user).subscribe(
             result => {
-              console.log(result)
               this.router.navigateByUrl("sign/in")
             }, error => console.log(error)
           )
