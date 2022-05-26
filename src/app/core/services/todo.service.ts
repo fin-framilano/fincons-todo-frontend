@@ -20,4 +20,9 @@ export class TodoService {
     const url: string = environment.baseUrl + "/todos"
     return this.http.post<number>(url, todo)
   }
+
+  public deleteTodo(id: number): Observable<any> {
+    const url: string = environment.baseUrl + "/todos/" + id
+    return this.http.delete<number>(url)
+  }
 }

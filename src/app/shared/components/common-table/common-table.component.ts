@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Option } from '../../models/option-model';
 
 @Component({
   selector: 'fin-common-table',
@@ -9,15 +10,16 @@ export class CommonTableComponent implements OnInit {
 
 
   @Input()
-  headers: any[] = []
+  headers: string[] = []
 
   @Input()
-  fields: any[] = []
+  fields: string[] = []
 
   @Input()
   items: any[] = []
 
-  listOfOptions: string[] = ["Seleziona", "Elimina", "Modifica"]
+  @Input()
+  options: string[] = []
 
   @Output()
   optionEvent: EventEmitter<any> = new EventEmitter<any>()
@@ -27,8 +29,13 @@ export class CommonTableComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  optionHandler(event: any) {
-    this.optionEvent.emit(event)
+  clickOnOptions(option: number, item: any) {
+    console.log("You clicked on\nOption:" + option + "\nItem with ID: " + item.id)
+    const selectedItem: Option = {
+      "option": option,
+      "item_id": item.id
+    }
+    this.optionEvent.emit(selectedItem)
   }
 
 }

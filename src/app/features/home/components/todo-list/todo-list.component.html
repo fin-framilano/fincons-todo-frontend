@@ -1,7 +1,9 @@
-<h2>Lista dei promemoria salvati!</h2>
+<h2>Lista dei promemoria salvati</h2>
 <fin-common-table *ngIf="atleastOne"
-    [headers]="['Contenuto', 'Data creazione', 'Data scadenza', 'Stato']"
+    [headers]="['Contenuto', 'Data creazione', 'Data scadenza', 'Stato', 'Opzioni']"
     [items]= listOfTodos
     [fields]= "['content', 'createdAt', 'dueDate', 'status']"
+    [options] = "['❌']"
+    (optionEvent)="optionHandler($event)"
 ></fin-common-table>
 <div *ngIf="!atleastOne">Non ci sono promemoria salvati!</div>

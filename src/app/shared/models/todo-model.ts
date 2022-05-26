@@ -1,5 +1,4 @@
 
-//Modello ricevuto dal backend, corrisponde all'UserDTO del Backend
 export interface Todo {
     id: number,
     content: string,
