@@ -45,7 +45,7 @@ button:hover {
   padding: 2vh;
   cursor: pointer;
   position: absolute;
-  right: 1%;
+  right: 0%;
 }
 
 .logout-button:hover {

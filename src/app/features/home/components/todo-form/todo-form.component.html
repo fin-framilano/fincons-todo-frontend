@@ -2,7 +2,7 @@
 <form #todoForm="ngForm" (submit)="completeTodoForm(todoForm)">
     <div>
         <label> Inserisci contenuto promemoria </label><br />
-        <textarea name="campoContent" #refContent="ngModel" [ngModel]="insertedContent" required 
+        <textarea rows="5" cols="50" name="campoContent" #refContent="ngModel" [ngModel]="insertedContent" required 
         ></textarea>
     </div>
     <div >
