@@ -19,6 +19,8 @@ Per poter lanciare l'applicazione è necessario installare le dipendenze necessa
 Per lanciare l'applicazione:
 
 ```ng serve```
+## Visualizzazione grafica dei moduli, componenti e servizi principali
+![diagramma classi e moduli](https://i.imgur.com/pFseu8i.png)
 
 ### Strumenti
 - [Visual Studio Code](https://code.visualstudio.com/)
