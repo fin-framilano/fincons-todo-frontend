@@ -30,10 +30,9 @@ export class CommonTableComponent implements OnInit {
   }
 
   clickOnOptions(option: number, item: any) {
-    console.log("You clicked on\nOption:" + option + "\nItem with ID: " + item.id)
     const selectedItem: Option = {
       "option": option,
-      "item_id": item.id
+      "item": item
     }
     this.optionEvent.emit(selectedItem)
   }

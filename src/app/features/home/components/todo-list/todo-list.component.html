@@ -1,9 +1,23 @@
 <h2>Lista dei promemoria salvati</h2>
 <fin-common-table *ngIf="atleastOne" 
-    [headers]="['Contenuto', 'Data creazione', 'Data scadenza', 'Stato', 'Opzioni']"
-    [items]=listOfTodos [fields]="['content', 'createdAt', 'dueDate', 'status']" 
-    [options]="['❌', '🔍', '✏️']"
-    (optionEvent)="optionHandler($event)"></fin-common-table>
+[headers]="['Contenuto', 'Data creazione', 'Data scadenza', 'Stato', 'Opzioni']"
+[items]=listOfTodos [fields]="['content', 'createdAt', 'dueDate', 'status']" 
+[options]="['❌', '🔍', '✏️']"
+(optionEvent)="optionHandler($event)"></fin-common-table>
 <div *ngIf="!atleastOne">Non ci sono promemoria salvati!</div>
 <img width="70px" height="70px" src="https://c.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif" alt="loading"
-    *ngIf="loading">
+*ngIf="loading">
+
+<small *ngIf="atleastOne">TIP: Se il contenuto della tua nota è troppo lungo prova a cliccare sulla lente di ingrandimento!</small>
+
+<fin-modal-dialog #modal_dialog
+    [title] = "'Contenuto nota'"
+    [content] = "selected_content"
+></fin-modal-dialog>
+
+<fin-modal-editing #modal_editing
+    [user_id]="user_id"
+    [todo_id]="selected_id"
+    [old_content]="selected_content"
+    (updateTodoEvent)="updateTodoHandler()"
+></fin-modal-editing>

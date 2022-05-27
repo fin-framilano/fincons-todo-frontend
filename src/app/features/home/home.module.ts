@@ -9,6 +9,7 @@ import { NavbarModule } from 'src/app/@template/navbar/navbar.module';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { TodoService } from 'src/app/core/services/todo.service';
+import { ModalEditingComponent } from './components/modal-editing/modal-editing.component';
 
 
 
@@ -17,7 +18,8 @@ import { TodoService } from 'src/app/core/services/todo.service';
     HomeContainerComponent,
     TodoListComponent,
     TodoSearchComponent,
-    TodoFormComponent
+    TodoFormComponent,
+    ModalEditingComponent
   ],
   imports: [
     CommonModule, HomeRoutingModule, NavbarModule, HomeRoutingModule, FormsModule, SharedModule

@@ -1,8 +1,8 @@
-<small>Ricorda che puoi fare un resize del campo di testo!</small>
+<small>TIP: Ricorda che puoi fare un resize del campo di testo!</small>
 <form #todoForm="ngForm" (submit)="completeTodoForm(todoForm)">
     <div>
         <label> Inserisci contenuto promemoria </label><br />
-        <textarea rows="5" cols="50" name="campoContent" #refContent="ngModel" [ngModel]="insertedContent" required 
+        <textarea [value]="old_content" rows="5" cols="50" name="campoContent" #refContent="ngModel" [ngModel]="insertedContent" required 
         ></textarea>
     </div>
     <div >

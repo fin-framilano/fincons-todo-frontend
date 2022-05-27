@@ -6,7 +6,6 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class TodoService {
-
   constructor(
     private http: HttpClient
   ) { }
@@ -24,5 +23,10 @@ export class TodoService {
   public deleteTodo(id: number): Observable<any> {
     const url: string = environment.baseUrl + "/todos/" + id
     return this.http.delete<number>(url)
+  }
+
+  public updateTodo(todo_id: number, todo: Todo): Observable<number> {
+    const url: string = environment.baseUrl + "/todos/"+ todo_id
+    return this.http.put<number>(url, todo)
   }
 }
