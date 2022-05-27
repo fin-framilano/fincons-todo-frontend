@@ -37,5 +37,5 @@ Per lanciare l'applicazione:
 
 ### Project Management
 - [NPM 8.10.0](https://www.npmjs.com/)
-- [Node](16.15.0)
+- [Node 16.15.0](https://nodejs.org/en/download/)
 
