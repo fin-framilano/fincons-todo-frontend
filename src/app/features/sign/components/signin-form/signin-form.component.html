@@ -1,0 +1,13 @@
+<form #signinForm="ngForm" (submit)="completeSigninForm(signinForm)">
+    <div class="centered">
+        <label> Email </label><br />
+        <input type="mail" name="campoEmail" #refEmail="ngModel" [ngModel]="insertedMail" required /><br />
+    </div>
+    <div class="centered">
+        <label> Password </label><br />
+        <input type="password" name="campoPassword" #refPassword="ngModel" [ngModel]="insertedPassword"
+            required /><br />
+    </div>
+    <input class="login-button" type="submit" value="Accedi" /><br />
+    <small class="error-msg" *ngIf="incorrectForm">Email o Password errate</small>
+</form>

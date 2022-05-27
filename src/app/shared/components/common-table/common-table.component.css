@@ -1,0 +1,40 @@
+table {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    width: 80%;
+    text-align: center;
+    border: 1px solid black;
+    table-layout: fixed;
+}
+
+th,
+td,
+tr {
+    vertical-align: middle;
+    border: 1px solid black;
+    height: 5vh;
+}
+
+button {
+    cursor: pointer;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.content_td {
+    max-width: 20%;
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    text-overflow: ellipsis
+}
+
+.content_td p {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    text-overflow: ellipsis;
+}

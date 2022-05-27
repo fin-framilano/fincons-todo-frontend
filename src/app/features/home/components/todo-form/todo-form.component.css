@@ -1,0 +1,27 @@
+input {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+textarea {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+form {
+    margin-top: 4%;
+}
+
+.todo-button {
+    font-size: large;
+}
+
+.input-radio {
+    padding: 3%;
+}
+
+.error-msg {
+    color: red;
+}
+
+select {
+    margin-top: 2%;
+}

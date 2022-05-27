@@ -1,0 +1,24 @@
+<form #signupForm="ngForm" (submit)="completeSignupForm(signupForm)">
+    <div>
+        <label> Inserisci la tua mail </label><br />
+        <input type="mail" name="campoEmail" #refEmail="ngModel" [ngModel]="insertedMail" required /><br />
+    </div>
+    <div>
+        <label> Inserisci una password </label><br />
+        <input type="password" name="campoPassword" #refPassword="ngModel" [ngModel]="insertedPassword"
+            required /><br />
+    </div>
+    <div>
+        <label> Inserisci nuovamente la password </label><br />
+        <input type="password" name="campoPasswordAgain" #refPasswordAgain="ngModel" [ngModel]="insertedPasswordAgain"
+            required /><br />
+        <small class="error-msg" *ngIf="refPasswordAgain.value !== refPassword.value && refPassword.touched"
+        >Le password non coincidono</small>
+
+    </div>
+    <input [disabled]="
+    refPassword.invalid || refEmail.invalid ||
+    refPassword.value !== refPasswordAgain.value" class="signup-button" type="submit" value="Registrati" /><br />
+    <small class="error-msg" *ngIf="incorrectForm">La mail utilizzata risulta già registrata nella nostra
+        applicazione</small>
+</form>

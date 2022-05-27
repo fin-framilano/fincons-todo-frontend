@@ -1,0 +1,22 @@
+<small>TIP: Ricorda che puoi fare un resize del campo di testo!</small>
+<form #todoForm="ngForm" (submit)="completeTodoForm(todoForm)">
+    <div>
+        <label> Inserisci contenuto promemoria </label><br />
+        <textarea rows="5" cols="50" name="campoContent" #refContent="ngModel"
+            [ngModel]="insertedContent" ></textarea>
+    </div>
+    <label> Inserisci giorno e orario</label><br />
+    <input type="datetime-local" name="campoDate" min="{{this.minimum_due}}" #refDate="ngModel"
+        [ngModel]="insertedDate" /><br />
+    
+    <label> Inserisci lo stato del promemoria</label><br />
+      <select name="campoStatus"  [ngModel]="insertedStatus" #refInsertedStatus>
+        <option *ngFor="let status of statusOptions" [value]="status">
+          {{status}}
+        </option>
+    </select><br>
+
+    <input [disabled]="refContent.value ==='' && refInsertedStatus.value === ''" class="todo-button" type="submit" value="Salva" /><br />
+
+    <small *ngIf="form_error" class="error-msg">Qualcosa è andato storto, ricontrolla i campi del form!</small>
+</form>

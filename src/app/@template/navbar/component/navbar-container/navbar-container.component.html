@@ -1,0 +1,10 @@
+<div class="toolbar" role="banner">
+  <button *ngFor="let tab of listTabs; index as i"
+    (click)="navbarSelectionHandler(i)"
+  >
+  {{tab}}
+</button>
+  <div *ngIf="showLogout" class="logout-button" (click)="goToSignIn()">
+    Logout
+  </div>
+</div>
