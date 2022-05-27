@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TodoService } from 'src/app/core/services/todo.service';
+import { TodoEnum } from 'src/app/shared/enums/todo-enum';
 import { Todo } from 'src/app/shared/models/todo-model';
 
 /**
@@ -32,12 +33,20 @@ export class TodoFormComponent implements OnInit {
   //Campi necessari all'NgForm
   insertedContent: string = ""
   insertedDate: Date = new Date()
+  insertedStatus: string = ""
 
+  //Opzioni di Stato Todo recuperate dalla TodoEnum
+  statusOptions: string[] = []
+  
   //Id utente recuperato dalla url
   user_id: number = 0
 
   //Data minima, utile per impedire il settaggio di promemoria nel passato
   minimum_due: string = ""
+
+
+  //Messaggio di errore in caso il form restituisca un 400 dal backend
+  form_error: boolean = false
 
   constructor(
     private todoService: TodoService,
@@ -58,6 +67,9 @@ export class TodoFormComponent implements OnInit {
         this.user_id = result['id']
       }
     )
+    
+    //Recupero gli stati possibili per un Todo dalla sua enumerazione
+    this.statusOptions = Object.values(TodoEnum)
   }
 
   /**
@@ -87,6 +99,19 @@ export class TodoFormComponent implements OnInit {
     return formattedString
   }
 
+  /**
+   * Recupero la chiave di un enum dato il valore
+   * @param value 
+   * @returns 
+   */
+  getKeyByValue(value: string) {
+    const indexOfS = Object.values(TodoEnum).indexOf(value as unknown as TodoEnum);
+  
+    const key = Object.keys(TodoEnum)[indexOfS];
+  
+    return key;
+  }
+
   completeTodoForm(todoForm: NgForm) {
     let currentDate = new Date()
     /**Se campoDate è una stringa significa che tutti i suoi campi sono stati compilati correttamente
@@ -98,7 +123,6 @@ export class TodoFormComponent implements OnInit {
     **/
     if (typeof (todoForm.value.campoDate) === "string") todoForm.value.campoDate = new Date(todoForm.value.campoDate)
     if (todoForm.value.campoDate.getTime() === this.insertedDate.getTime()) {
-      console.log("Fallback to currentDate + fallback_days")
       todoForm.value.campoDate = new Date("1970-01-01T01:00")
     }
 
@@ -113,7 +137,7 @@ export class TodoFormComponent implements OnInit {
       "content": todoForm.value.campoContent,
       "dueDate": this.buildLocaleDate(todoForm.value.campoDate),
       "createdAt": this.buildLocaleDate(currentDate),
-      "status": "TODO",
+      "status": this.getKeyByValue(todoForm.value.campoStatus),
       "userId": this.user_id
     }
 
@@ -124,7 +148,10 @@ export class TodoFormComponent implements OnInit {
         () => {
           this.router.navigateByUrl("home/" + this.user_id + "/list")
           alert("Nuovo promemoria creato con successo")
-        }, error => console.log(error)
+        }, error => {
+          console.log(error)
+          this.form_error = true
+        }
       )
     } else {
       this.todoService.updateTodo(this.todo_id, todo).subscribe(
@@ -132,7 +159,10 @@ export class TodoFormComponent implements OnInit {
           this.router.navigateByUrl("home/" + this.user_id + "/list")
           this.updateTodoEvent.emit()
           alert("Promemoria aggiornato con successo")
-        }, error => console.log(error)
+        }, error => {
+          console.log(error)
+          this.form_error = true
+        }
       )
     }
     

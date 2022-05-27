@@ -13,3 +13,11 @@ form {
 .todo-button {
     font-size: large;
 }
+
+.input-radio {
+    padding: 3%;
+}
+
+.error-msg {
+    color: red;
+}
