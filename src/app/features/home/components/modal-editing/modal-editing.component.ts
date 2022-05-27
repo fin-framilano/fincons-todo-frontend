@@ -9,9 +9,6 @@ import { NgForm } from '@angular/forms';
 export class ModalEditingComponent implements OnInit {
 
   @Input()
-  old_content: string = "Some text here"
-
-  @Input()
   user_id: number = 0
 
   @Input()

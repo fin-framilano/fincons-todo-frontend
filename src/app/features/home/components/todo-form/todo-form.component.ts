@@ -18,10 +18,8 @@ import { Todo } from 'src/app/shared/models/todo-model';
 })
 export class TodoFormComponent implements OnInit {
 
-  //I due Input() sono utili per il riutilizzo di questo form per la modifica e non la creazione
+  //Questo Input()  è utile per il riutilizzo di questo form per la modifica e non la creazione
   //L'output avvisa il padre dell'avvenuto aggiornamento della lista dei todo
-  @Input()
-  old_content: string = ""
 
   @Input()
   todo_id: number = 0
@@ -37,7 +35,7 @@ export class TodoFormComponent implements OnInit {
 
   //Opzioni di Stato Todo recuperate dalla TodoEnum
   statusOptions: string[] = []
-  
+
   //Id utente recuperato dalla url
   user_id: number = 0
 
@@ -67,7 +65,7 @@ export class TodoFormComponent implements OnInit {
         this.user_id = result['id']
       }
     )
-    
+
     //Recupero gli stati possibili per un Todo dalla sua enumerazione
     this.statusOptions = Object.values(TodoEnum)
   }
@@ -106,9 +104,9 @@ export class TodoFormComponent implements OnInit {
    */
   getKeyByValue(value: string) {
     const indexOfS = Object.values(TodoEnum).indexOf(value as unknown as TodoEnum);
-  
+
     const key = Object.keys(TodoEnum)[indexOfS];
-  
+
     return key;
   }
 
@@ -147,7 +145,6 @@ export class TodoFormComponent implements OnInit {
       this.todoService.createTodo(todo).subscribe(
         () => {
           this.router.navigateByUrl("home/" + this.user_id + "/list")
-          alert("Nuovo promemoria creato con successo")
         }, error => {
           console.log(error)
           this.form_error = true
@@ -158,14 +155,13 @@ export class TodoFormComponent implements OnInit {
         () => {
           this.router.navigateByUrl("home/" + this.user_id + "/list")
           this.updateTodoEvent.emit()
-          alert("Promemoria aggiornato con successo")
         }, error => {
           console.log(error)
           this.form_error = true
         }
       )
     }
-    
+
   }
 
 }

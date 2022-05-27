@@ -21,3 +21,7 @@ form {
 .error-msg {
     color: red;
 }
+
+select {
+    margin-top: 2%;
+}

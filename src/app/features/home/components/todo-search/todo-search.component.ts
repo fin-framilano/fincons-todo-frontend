@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TodoService } from 'src/app/core/services/todo.service';
+import { TodoEnum } from 'src/app/shared/enums/todo-enum';
 import { Todo } from 'src/app/shared/models/todo-model';
 
 @Component({
@@ -47,7 +48,12 @@ export class TodoSearchComponent implements OnInit {
       this.listOfAllTodos.forEach(todo => {
         if (word.length !== 0 && todo.content.toLowerCase().includes(word.toLowerCase())) {
           this.atleastOne = true
-          if (!this.listOfTodos.includes(todo)) this.listOfTodos.push(todo)
+          if (!this.listOfTodos.includes(todo)) {
+            if (todo.status === "TODO") todo.status = TodoEnum.TODO
+            if (todo.status === "IN_PROGRESS") todo.status = TodoEnum.IN_PROGRESS
+            if (todo.status === "DONE") todo.status = TodoEnum.DONE
+            this.listOfTodos.push(todo)
+          }
         }
       });
     });

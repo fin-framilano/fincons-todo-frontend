@@ -72,11 +72,11 @@ export class TodoListComponent implements OnInit {
         else {
           //Carico il testo in italiano per lo stato del TODO
           this.listOfTodos = items.map(t => {
-            if (t.status === "TODO") t.status = TodoEnum.TODO
-            if (t.status === "IN_PROGRESS") t.status = TodoEnum.IN_PROGRESS
-            if (t.status === "DONE") t.status = TodoEnum.DONE
-            return t
-          }
+              if (t.status === "TODO") t.status = TodoEnum.TODO
+              if (t.status === "IN_PROGRESS") t.status = TodoEnum.IN_PROGRESS
+              if (t.status === "DONE") t.status = TodoEnum.DONE
+              return t
+            }
           )
           //Metodo per il sorting della tabella in base alla "data di scadenza"
           this.listOfTodos = CrudUtils.sortArrayByField(this.listOfTodos, "dueDate")
@@ -120,7 +120,6 @@ export class TodoListComponent implements OnInit {
         this.modal_dialog.open();
         break
       case OptionEnum.MODIFICA:
-        this.selected_content = selected_option.item.content
         this.selected_id = selected_option.item.id
         this.modal_editing.open();
         break
